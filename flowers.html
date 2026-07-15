@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower for You! 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #5c0612; /* Tema Maroon Gelap */
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Container Utama */
+        .flower-container {
+            background-color: #fffdfa; /* Kertas ivory hangat */
+            width: 100%;
+            max-width: 950px;
+            border-radius: 12px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column; /* Default vertikal di HP */
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #4a050e;
+        }
+
+        /* Tombol Kembali ke Halaman Kado (Gifts) */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background-color: #5c0612;
+            color: #fffdfa;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .back-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- BAGIAN KIRI: VISUAL BUKET BUNGA --- */
+        .flower-visual {
+            background-color: #4a050e; /* Maroon pekat kontras */
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 300px;
+        }
+        .flower-visual h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #f2e9e1;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .flower-img-wrapper {
+            position: relative;
+            max-width: 280px;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .flower-img-wrapper:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        .flower-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+        }
+
+        /* --- BAGIAN KANAN: KARTU MAKNA BUNGA --- */
+        .flower-card {
+            padding: 40px 30px;
+            background-image: radial-gradient(#f0ede4 1px, transparent 1px);
+            background-size: 15px 15px; /* Efek tekstur kertas kartu ucapan retro */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card-header {
+            font-family: 'Playfair Display', serif;
+            color: #5c0612;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-bottom: 2px dashed #5c0612;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .meaning-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .meaning-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .flower-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .meaning-text h3 {
+            font-family: 'Playfair Display', serif;
+            color: #4a050e;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .meaning-text p {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* --- ANIMASI KELOPAK BUNGA BERGUGURAN (FLOWER PETALS) --- */
+        .petal {
+            position: absolute;
+            background-color: #a6192e;
+            border-radius: 150% 0 150% 150%;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 10;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                top: 110%;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ================= MODE RESPONSIF LAPTOP ================= */
+        @media (min-width: 768px) {
+            .flower-container {
+                flex-direction: row; /* Berjejer menyamping */
+                min-height: 600px;
+            }
+            .flower-visual {
+                width: 45%;
+                padding: 50px 30px;
+            }
+            .flower-card {
+                width: 55%;
+                padding: 50px 50px;
+            }
+            .card-header {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="petal" style="width: 10px; height: 15px; left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
+    <div class="petal" style="width: 8px; height: 12px; left: 30%; animation-duration: 8s; animation-delay: 2s;"></div>
+    <div class="petal" style="width: 12px; height: 18px; left: 55%; animation-duration: 7s; animation-delay: 1s;"></div>
+    <div class="petal" style="width: 9px; height: 14px; left: 75%; animation-duration: 9s; animation-delay: 3s;"></div>
+    <div class="petal" style="width: 11px; height: 16px; left: 90%; animation-duration: 5s; animation-delay: 0.5s;"></div>
+
+    <div class="flower-container">
+        <a href="gifts.html" class="back-btn">✕</a>
+        
+        <div class="flower-visual">
+            <h2>Flower for You!</h2>
+            <div class="flower-img-wrapper">
+                <img src="flowers_display.jpg" alt="A Beautiful Bouquet" class="flower-img">
+            </div>
+        </div>
+
+        <div class="flower-card">
+            <h1 class="card-header">The Language of Flowers</h1>
+            
+            <ul class="meaning-list">
+                <li class="meaning-item">
+                    <span class="flower-icon">🌹</span>
+                    <div class="meaning-text">
+                        <h3>Red Rose (Mawar Merah)</h3>
+                        <p>Simbol klasik dari cinta sejati, gairah, dan rasa kagum yang mendalam. Memberikan mawar merah adalah cara terindah untuk bilang, "Aku sangat mencintaimu di setiap detak jantungku."</p>
+                    </div>
+                </li>
+                
+                <li class="meaning-item">
+                    <span class="flower-icon">🌸</span>
+                    <div class="meaning-text">
+                        <h3>Baby's Breath</h3>
+                        <p>Bunga-bunga kecil putih yang melambangkan cinta abadi, ketulusan, dan kemurnian hati. Kehadirannya melambangkan rasa syukur atas ketenangan yang selalu kamu bawa di hidupku.</p>
+                    </div>
+                </li>
+
+                <li class="meaning-item">
+                    <span class="flower-icon">🌿</span>
+                    <div class="meaning-text">
+                        <h3>Eucalyptus Leaves</h3>
+                        <p>Daun hijau pelengkap yang melambangkan perlindungan, kedamaian, dan kekuatan untuk terus bertumbuh bersama menghadapi segala musim kehidupan.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

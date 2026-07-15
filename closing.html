@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You, Love! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #5c0612; /* Tema Maroon Gelap */
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 40px 20px;
+            color: #fffdfa;
+        }
+
+        /* CONTAINER UTAMA */
+        .wrapper {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* 1. KARTU PENUTUP (Sesuai Referensi, diubah jadi Merah Maroon) */
+        .closing-card {
+            background-color: #fffdfa; /* Kertas ivory hangat */
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column; /* Vertikal di HP */
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            border: 2px solid #a6192e;
+            position: relative;
+        }
+
+        /* Lilin Segel (Wax Seal) Versi Merah Maroon */
+        .wax-seal-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 140px;
+            height: 140px;
+        }
+        .wax-seal {
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle at 30% 30%, #bd1c33, #7a0916);
+            border-radius: 50%;
+            box-shadow: 
+                0 6px 15px rgba(0,0,0,0.3), 
+                inset -4px -4px 10px rgba(0,0,0,0.6), 
+                inset 4px 4px 10px rgba(255,255,255,0.2);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #8c1020;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .wax-seal:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        /* Bentuk luar lilin meleleh yang tidak beraturan */
+        .wax-seal::before {
+            content: '';
+            position: absolute;
+            width: 125px;
+            height: 120px;
+            background: #941121;
+            border-radius: 48% 52% 50% 50% / 40% 40% 60% 60%;
+            z-index: -1;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        /* Stamp Pita di Tengah Wax Seal (Persis seperti referensi) */
+        .seal-design {
+            font-size: 2.8rem;
+            color: #4a050e;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.15);
+            opacity: 0.85;
+            user-select: none;
+        }
+
+        /* Bagian Teks Kartu Ucapan */
+        .card-text {
+            text-align: center;
+            color: #333;
+        }
+        .card-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #a6192e;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .card-text p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* 2. BAGIAN KOLOM KOMENTAR (GUEST BOOK) */
+        .comment-section {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .comment-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #fffdfa;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Form Input */
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #f7e1d7;
+        }
+        .form-group input, .form-group textarea {
+            background-color: #fffdfa;
+            border: 2px solid #a6192e;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #222;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #ff4d6d;
+            box-shadow: 0 0 8px rgba(255, 77, 109, 0.3);
+        }
+        
+        .submit-btn {
+            background-color: #a6192e;
+            color: #fffdfa;
+            border: 1px solid #fffdfa;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover {
+            background-color: #fffdfa;
+            color: #a6192e;
+        }
+
+        /* Daftar Komentar yang Masuk */
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        /* Custom Scrollbar */
+        .comments-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .comments-list::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        .comment-card {
+            background-color: #fffdfa;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-left: 5px solid #a6192e;
+            animation: slideIn 0.3s ease forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .comment-name {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #a6192e;
+        }
+        .comment-time {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .comment-body {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .no-comments {
+            text-align: center;
+            font-style: italic;
+            opacity: 0.6;
+            font-size: 0.9rem;
+            padding: 20px 0;
+        }
+
+        /* ================= RESPONSIVE LAPTOP ================= */
+        @media (min-width: 768px) {
+            .closing-card {
+                flex-direction: row; /* Berjejer menyamping di laptop */
+                text-align: left;
+                padding: 50px;
+                gap: 50px;
+            }
+            .card-text {
+                text-align: left;
+            }
+            .card-text p {
+                margin: 0;
+            }
+            .wax-seal-wrapper {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <div class="closing-card">
+            <div class="wax-seal-wrapper">
+                <div class="wax-seal">
+                    <span class="seal-design">🎀</span>
+                </div>
+            </div>
+            <div class="card-text">
+                <h1>Thank You</h1>
+                <p>
+                    Terimaksih banyak sudah hadir kembalii kedalamm kehidupann akuu, semogaa kitaa bisaa bersamaa dalam waktu yang panjangg ❤️
+                </p>
+            </div>
+        </div>
+
+        <div class="comment-section">
+            <h2>Kirim Pesan / Komentar 💌</h2>
+            
+            <form class="comment-form" id="commentForm">
+                <div class="form-group">
+                    <label for="inputName">Nama Kamu :</label>
+                    <input type="text" id="inputName" placeholder="Masukkan nama panggilanmu..." required>
+                </div>
+                <div class="form-group">
+                    <label for="inputText">Pesan hangat untukku :</label>
+                    <textarea id="inputText" rows="3" placeholder="Tulis sesuatu manis di sini..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Kirim Pesan ✨</button>
+            </form>
+
+            <div class="comments-list" id="commentsList">
+                </div>
+        </div>
+
+    </div>
+
+    <script>
+        const commentForm = document.getElementById('commentForm');
+        const commentsList = document.getElementById('commentsList');
+
+        // Mengambil komentar dari localStorage saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', loadComments);
+
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('inputName').value;
+            const text = document.getElementById('inputText').value;
+            const time = new Date().toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            const newComment = { name, text, time };
+
+            // Simpan ke LocalStorage
+            saveComment(newComment);
+            
+            // Render ulang daftar komentar
+            addCommentToDOM(newComment);
+
+            // Reset form
+            commentForm.reset();
+        });
+
+        function saveComment(comment) {
+            let comments = localStorage.getItem('anniversary_comments');
+            if (comments === null) {
+                comments = [];
+            } else {
+                comments = JSON.parse(comments);
+            }
+            comments.unshift(comment); // Tambahkan komentar baru di paling atas
+            localStorage.setItem('anniversary_comments', JSON.stringify(comments));
+        }
+
+        function loadComments() {
+            let comments = localStorage.getItem('anniversary_comments');
+            commentsList.innerHTML = ''; // Bersihkan list
+
+            if (comments === null || JSON.parse(comments).length === 0) {
+                commentsList.innerHTML = `<div class="no-comments">Belum ada pesan yang dikirim. Jadilah yang pertama! 💕</div>`;
+                return;
+            }
+
+            comments = JSON.parse(comments);
+            comments.forEach(comment => {
+                addCommentToDOM(comment);
+            });
+        }
+
+        function addCommentToDOM(comment) {
+            // Hapus placeholder kosong jika ada komentar baru masuk
+            const noCommentsElement = document.querySelector('.no-comments');
+            if (noCommentsElement) {
+                noCommentsElement.remove();
+            }
+
+            const card = document.createElement('div');
+            card.className = 'comment-card';
+            card.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-name">${escapeHTML(comment.name)}</span>
+                    <span class="comment-time">${comment.time}</span>
+                </div>
+                <div class="comment-body">
+                    ${escapeHTML(comment.text).replace(/\n/g, '<br>')}
+                </div>
+            `;
+            commentsList.appendChild(card);
+        }
+
+        // Keamanan sederhana mencegah eksploitasi script (XSS)
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+    </script>
+
+</body>
+</html>
