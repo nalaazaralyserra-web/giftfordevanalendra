@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Love Letter 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #5c0612; font-family: 'Montserrat', sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .scrapbook-container { background-color: #fffdfa; width: 100%; max-width: 900px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        .photo-panel { background-color: #4a050e; padding: 30px; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; }
+        .photo-frame { background-color: white; padding: 12px 12px 25px 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); transform: rotate(-2deg); transition: transform 0.3s ease; max-width: 240px; width: 100%; }
+        .photo-frame:nth-child(2) { transform: rotate(3deg); }
+        .photo-frame:hover { transform: rotate(0deg) scale(1.03); }
+        .photo-frame img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+        .panel-title { font-family: 'Playfair Display', serif; color: #fffdfa; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; }
+        .letter-panel { padding: 40px 30px; position: relative; background-image: linear-gradient(#e5e5e5 1px, transparent 1px); background-size: 100% 2em; line-height: 2em; }
+        .binder-rings { display: none; }
+        .letter-header { font-family: 'Great Vibes', cursive; color: #5c0612; font-size: 3rem; margin-bottom: 20px; line-height: 1; }
+        .letter-content { font-family: 'Playfair Display', serif; color: #2b2b2b; font-size: 1.05rem; text-align: justify; }
+        .letter-content p { margin-bottom: 2em; text-indent: 30px; }
+        .letter-footer { margin-top: 40px; text-align: right; font-family: 'Great Vibes', cursive; color: #5c0612; font-size: 2.5rem; line-height: 1; }
+        .letter-footer span { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #777; display: block; font-style: italic; }
+        
+        /* TOMBOL KEMBALI KREATIF KE #GIFTS */
+        .back-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: #5c0612; font-size: 1.2rem; cursor: pointer; text-decoration: none; font-weight: bold; z-index: 99; }
+
+        @media (min-width: 768px) {
+            .scrapbook-container { flex-direction: row; min-height: 550px; }
+            .photo-panel { width: 40%; padding: 40px 20px; }
+            .letter-panel { width: 60%; padding: 50px 50px 50px 60px; }
+            .binder-rings { display: block; position: absolute; left: 40%; top: 0; bottom: 0; width: 20px; transform: translateX(-50%); z-index: 10; background-image: radial-gradient(circle, #333 3px, transparent 4px); background-size: 20px 32px; }
+            .letter-header { font-size: 3.5rem; }
+            .letter-content { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scrapbook-container">
+        <!-- LINK TOMBOL BALIK NYASAR KE SINI -->
+        <a href="gifts.html" class="back-btn">✕</a>
+        
+        <div class="photo-panel">
+            <h2 class="panel-title">A Love Letter</h2>
+            <div class="photo-frame"><img src="foto1.jpg" alt="Photo 1"></div>
+            <div class="photo-frame"><img src="foto2.jpg" alt="Photo 2"></div>
+        </div>
+
+        <div class="binder-rings"></div>
+
+        <div class="letter-panel">
+            <h1 class="letter-header">Dear Ka Epann,</h1>
+            <div class="letter-content">
+                <p>i'm so lucky to have you, whean i'm with you i always feel happy. kamu selalu berhasil buat aku senyum dan tertawa, kamu juga yang bikin aku tau gimana rasanya dicintai. thank u for being again in my life. i love you so so sooo much. kaloo misalnyaa adaa alat ukurr kebahagiaan mungkin udahh gaa ke ukurr lagii sebahagiaa apaa aku. maaf yaa kadang sifat akuu masih kekanak-kanakan sampai bikin kamu sering ngalah. terimakasihh udahh mauu balik lagii ke akuu, terimakasihh udahh mau sabarr ngadepinn semuaa sifat akuu yaa.</p>
+                <p>akuu jugaaa mauu bilang iniii kaa, tapii iniii cumaa buatt mengutarakan isi hatii akuu ajaa. semisalnyaa adaa waktu dimanaa seseorangg yang palingg kakaa cintaii dan paling kakaa sayangi balik lagii, kakaa bolehh sangat bolehh sekali utuk kembali samaa diaa. tapii akuu berdoa semogaa ga adaa harii ituu, karenaa akuu terlanjurr jatuhh sukaa samaa kakaa. one more, i really really love you. meetiing you was one of the best part on my life.</p>
+            </div>
+            <div class="letter-footer">
+                <span>With Love,</span>
+                Shanina
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
