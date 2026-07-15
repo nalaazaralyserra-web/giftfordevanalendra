@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Boyfie!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #5c0612; /* Maroon gelap */
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #page-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            color: #f7e1d7;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Container Amplop Responsif */
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1.6 / 1;
+            cursor: pointer;
+            perspective: 1000px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+        .envelope-container:hover {
+            transform: scale(1.03);
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #f5ebe0; /* Cream */
+            border-radius: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        /* Segitiga Tutup Atas */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 110px solid #e3d5ca;
+        }
+        /* Lipatan Depan */
+        .envelope::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0; height: 0;
+            border-left: 160px solid #eddcd2;
+            border-right: 160px solid #eddcd2;
+            border-bottom: 100px solid #eddcd2;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .instruction {
+            color: #f7e1d7;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 30px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Responsif Screen Laptop */
+        @media (min-width: 768px) {
+            .title { font-size: 5rem; }
+            .instruction { font-size: 1.1rem; }
+            .envelope-container { max-width: 400px; }
+            .envelope::before {
+                border-left-width: 200px;
+                border-right-width: 200px;
+                border-top-width: 135px;
+            }
+            .envelope::after {
+                border-left-width: 200px;
+                border-right-width: 200px;
+                border-bottom-width: 125px;
+            }
+        }
+
+        /* Animasi Transisi Keluar */
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page-container">
+        <h1 class="title">Haloo Kaa Epann!!!</h1>
+        
+        <div class="envelope-container" onclick="openAndGo()">
+            <div class="envelope"></div>
+        </div>
+        
+        <p class="instruction">tap the envelope for the surprise...</p>
+    </div>
+
+    <script>
+        function openAndGo() {
+            const container = document.getElementById('page-container');
+            // Beri efek memudar lembut
+            container.classList.add('fade-out');
+            
+            // Tunggu 600ms sampai efek pudar selesai, lalu pindah halaman
+            setTimeout(() => {
+                window.location.href = 'gifts.html';
+            }, 600);
+        }
+    </script>
+</body>
+</html>
